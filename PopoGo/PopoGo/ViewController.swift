@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
-
+    var manager = CLLocationManager()
+    
+    @IBOutlet weak var mapaCool: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+            self.mapaCool.showsUserLocation = true
+        // Do  any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
