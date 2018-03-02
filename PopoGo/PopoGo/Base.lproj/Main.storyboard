@@ -19,8 +19,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xWo-3D-tgI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="-2" y="-7" width="375" height="667"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nq9-Mk-jUi">
+                                <rect key="frame" x="296" y="13" width="61" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="4rN-VH-1Qe"/>
+                                    <constraint firstAttribute="height" constant="50" id="Q7F-Wk-GDz"/>
+                                </constraints>
+                                <state key="normal" image="compass"/>
+                                <connections>
+                                    <action selector="uodatePosition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S4u-KA-p9x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -28,6 +39,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xWo-3D-tgI" secondAttribute="trailing" id="AmC-6y-AdM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xWo-3D-tgI" secondAttribute="bottom" id="Hi9-5l-dwJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xWo-3D-tgI" secondAttribute="bottom" id="JVc-5Y-3gh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nq9-Mk-jUi" secondAttribute="trailing" id="O8j-ry-EP7"/>
+                            <constraint firstItem="nq9-Mk-jUi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="WF9-g4-3p8"/>
                             <constraint firstItem="xWo-3D-tgI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="c5U-fV-3ca"/>
                             <constraint firstItem="xWo-3D-tgI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gCD-yJ-nZA"/>
                         </constraints>
@@ -42,4 +55,7 @@
             <point key="canvasLocation" x="-42.399999999999999" y="-5.8470764617691158"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="compass" width="512" height="512"/>
+    </resources>
 </document>

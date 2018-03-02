@@ -10,32 +10,55 @@ import UIKit
 import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-    var manager = CLLocationManager()
     
     @IBOutlet weak var mapaCool: MKMapView!
     
+ var manager = CLLocationManager()
+    
+var updateCount = 0
+    let mapDistance : CLLocationDistance = 300
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         self.manager.delegate = self
         
-        if CLLocationManagerDelegate.auto == .authorizedWhenInUse {
-            print("Estamos listos para salir a casar popos")
-        }
-        }
-        
-        self.manager.requestWhenInUseAuthorization()
-        
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            print("Estamos listos para salir a casar Popos")
             self.mapaCool.showsUserLocation = true
-       
-        // Do  any additional setup after loading the view, typically from a nib.
+            self.manager.startUpdatingLocation()
+        } else {
+self.manager.requestWhenInUseAuthorization()
+// Do any additional setup after loading loading the view, typically from a nib.
+        }
     }
 
-func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //MARK: Core Location Manager Delegate
+    
+    func locationManager (_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if updateCount < 4 {
+            if (self.manager.location?.coordinate) != nil {
+                let region = MKCoordinateRegionMakeWithDistance(self.manager.location!.coordinate, mapDistance, mapDistance)
+                self.mapaCool.setRegion(region, animated: true)
+            updateCount += 1
+        }else{
+            self.manager.startUpdatingLocation()
+            
+        }
+        
+        
     }
-
-
-
+        
+    
+    
+}
+    @IBAction func uodatePosition(_ sender: Any) {if (self.manager.location?.coordinate) != nil {
+                let region = MKCoordinateRegionMakeWithDistance(self.manager.location!.coordinate, 1000, 1000)
+                 self.mapaCool.setRegion(region, animated: true)
+                 updateCount += 1
+        }
+    }
+    
+   
+    
+}
 
