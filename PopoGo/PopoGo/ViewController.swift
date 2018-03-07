@@ -12,11 +12,11 @@ import MapKit
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapaCool: MKMapView!
-    
- var manager = CLLocationManager()
-    
-var updateCount = 0
+    var manager = CLLocationManager()
+    var updateCount = 0
     let mapDistance : CLLocationDistance = 300
+    var pokemonSpawTimer : TimeInterval = 5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,10 +26,16 @@ var updateCount = 0
             print("Estamos listos para salir a casar Popos")
             self.mapaCool.showsUserLocation = true
             self.manager.startUpdatingLocation()
-        } else {
-self.manager.requestWhenInUseAuthorization()
-// Do any additional setup after loading loading the view, typically from a nib.
+            
+            Timer.scheduledTimer(withTimeInterval: pokemonSpawTimer, repeats: true, block: { (itmer) in
+                //Hay que generar un nuevo pokemon!!
+                print("Generando un nuevo pokemon")
+            })
+            
+        }else {
+            self.manager.requestWhenInUseAuthorization()
         }
+        
     }
 
     //MARK: Core Location Manager Delegate
