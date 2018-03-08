@@ -30,6 +30,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             Timer.scheduledTimer(withTimeInterval: pokemonSpawTimer, repeats: true, block: { (itmer) in
                 //Hay que generar un nuevo pokemon!!
                 print("Generando un nuevo pokemon")
+                
+                if let coordinate = self.manager.location?.coordinate {
+                    let annotation = MKPointAnnotation ()
+                    annotation.coordinate = coordinate
+                    annotation.coordinate.latitude += (Double(arc4random_uniform(100)) - 500.0) / 30000.0
+                    annotation.coordinate.longitude += (Double(arc4random_uniform(100)) - 500.0)/30000.0
+                    self.mapaCool.addAnnotation(annotation)
+                    
+                }
+                
+                
             })
             
         }else {
@@ -60,7 +71,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func uodatePosition(_ sender: Any) {if (self.manager.location?.coordinate) != nil {
                 let region = MKCoordinateRegionMakeWithDistance(self.manager.location!.coordinate, 1000, 1000)
                  self.mapaCool.setRegion(region, animated: true)
-                 updateCount += 1
+                  updateCount += 1
         }
     }
     
