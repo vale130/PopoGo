@@ -34,8 +34,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if let coordinate = self.manager.location?.coordinate {
                     let annotation = MKPointAnnotation ()
                     annotation.coordinate = coordinate
-                    annotation.coordinate.latitude += (Double(arc4random_uniform(100)) - 500.0) / 30000.0
-                    annotation.coordinate.longitude += (Double(arc4random_uniform(100)) - 500.0)/30000.0
+                    annotation.coordinate.latitude += (Double(arc4random_uniform(100)) - 500.0) / 40000.0
+                    annotation.coordinate.longitude += (Double(arc4random_uniform(100)) - 500.0)/40000.0
                     self.mapaCool.addAnnotation(annotation)
                     
                 }
